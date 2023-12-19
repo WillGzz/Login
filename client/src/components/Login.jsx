@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Form({ handleSubmit }) {
+function Login({ handleSubmit }) {
     const [name, setName] = useState("");
     const [Password, setPassword] = useState("");
 
@@ -12,20 +12,24 @@ function Form({ handleSubmit }) {
     }
 
     return (
+        <div className="login-container">
+        <div className="form">
         <form onSubmit={submitForm}>
             <label htmlFor="linkName">Name:</label>
+        
+            <input type="text" id="Name" name="linkName" value={name} onChange={(event) => setName(event.target.value)} />
             <br />
-            <input type="text" id="linkName" name="linkName" value={name} onChange={(event) => setName(event.target.value)} />
             <br />
-            <br />
-            <label For="Password">Password</label>
-            <br />
-            <input type="text" id="Passwprd" name="Password" value={Password} onChange={(event) => setPassword(event.target.value)} />
+            <label For="Password">Password:</label>
+           
+            <input type="text" id="Password" name="Password" value={Password} onChange={(event) => setPassword(event.target.value)} />
             <br />
             <br />
             <input id="submit-button" type="submit" value="Submit" />
         </form>
+        </div>
+        </div>
     )
 }
 
-export default Form;
+export default Login;

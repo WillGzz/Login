@@ -1,25 +1,27 @@
 import { Link } from "react-router-dom"
 
+
 function Home() {
 
 
 
     
   return (
+    <div className="container">
     <div>
-      
-      <h1>Login for a surprise</h1>
+        <h1>Login For A Surprise</h1>
     
-      <Link to={'/'}>
-          <button>Signup</button>
+      <Link to={'Signup'}>
+          <button className="signup-button">Signup</button>
           &nbsp;&nbsp;
         </Link>
 
-        <Link to={''}>
-          <button>
+        <Link to={'Login'}>
+          <button className="login-button">
              Login 
           </button>
         </Link>
+    </div>
     </div>
   );
 }
