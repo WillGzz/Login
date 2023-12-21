@@ -9,7 +9,10 @@ function Home() {
   return (
     <div className="container">
     <div>
-        <h1>Login For A Surprise</h1>
+        <p>Demo Account:
+       <br /> JohnDoe <br/> JohnDoe123@ 
+        </p>
+        <h1>Login For A Surprise!</h1>
     
       <Link to={'Signup'}>
           <button className="signup-button">Signup</button>

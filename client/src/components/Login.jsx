@@ -12,20 +12,22 @@ function Login({ handleSubmit }) {
     }
 
     return (
+
         <div className="login-container">
-        <div className="form">
+            <div className="form">
+
         <form onSubmit={submitForm}>
-            <label htmlFor="linkName">Name:</label>
+            <label htmlFor="linkName">UserName:</label>
         
             <input type="text" id="Name" name="linkName" value={name} onChange={(event) => setName(event.target.value)} />
             <br />
             <br />
             <label For="Password">Password:</label>
            
-            <input type="text" id="Password" name="Password" value={Password} onChange={(event) => setPassword(event.target.value)} />
+            <input type="password" id="Password" name="Password" value={Password} onChange={(event) => setPassword(event.target.value)} />
             <br />
             <br />
-            <input id="submit-button" type="submit" value="Submit" />
+            <input id="submit-button" type="submit" value="Confirm" />
         </form>
         </div>
         </div>
