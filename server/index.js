@@ -7,7 +7,8 @@ const app = express();
 
 const PORT = 3000
 
-
+//the middleware to parse JSON bodies
+app.use(express.json());
 
 //sets the path to the client folder
 const clientPath = path.resolve(__dirname, '../client/dist')
@@ -23,7 +24,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'))
     })
 
-    
+    app.get('/ReactPage', (req, res) => {
+        res.sendFile(path.resolve(__dirname, './components/ReactPage.jsx'));
+      });
+  
 
  app.listen(PORT, () => {
      console.log(`Server is live on port ${PORT}`)
@@ -31,6 +35,7 @@ app.get('/', (req, res) => {
         
 //CRUD APPLICATION
 app.post('/signup', db.signup);
+
 
      
         

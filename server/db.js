@@ -10,19 +10,21 @@ const pool = new Pool({
  //request, response
 
   // Signup function
-const signup = (request, response) => {
-  const { username, password } = request.body;
-
-  pool.query(
-    "INSERT INTO customer (username, password) VALUES ($1, $2) RETURNING *", [username, password],
-    (error, results) => {
-      if (error) {
-        throw error;
+  const signup = (request, response) => {
+    const { username, password } = request.body;
+  
+    pool.query(
+      "INSERT INTO customer (username, password) VALUES ($1, $2) RETURNING *", [username, password],
+      (error, results) => {
+        if (error) {
+          throw error;
+        }
+        // Send a response with a URL to redirect to
+        response.json({ redirect: '/ReactPage' });
       }
-      response.status(201).send(`User added with ID: ${results.rows[0].id}`);
-    }
-  );
-};
+    );
+  };
+  
 
 // Export the signup function
 module.exports = {

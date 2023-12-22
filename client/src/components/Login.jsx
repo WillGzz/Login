@@ -1,16 +1,27 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function Login({ handleSubmit }) {
     const [name, setName] = useState("");
     const [Password, setPassword] = useState("");
 
-    const submitForm = (event) => {
-        event.preventDefault();
-        handleSubmit({ name, Password });
-        setName("");
-        setPassword("");
-    }
-
+    const submitForm = async (event) => {
+        //    event.preventDefault(); //prevents the form from being submitted when the “Submit” button is clicked. This allows the form submission to be handled by the JavaScript code instead
+            if (isMatch && isValid && name !== "")  {
+                try {
+                 //  await handleSubmit(name, password);
+                    setName("");
+                    setPassword("");
+                    setNewPassword("");
+        
+                    navigate('/ReactPage');
+                } catch (error) {
+                    console.error('Error:', error);
+                    // Handle any errors from handleSubmit here
+                }
+            } 
+        };
     return (
 
         <div className="login-container">
