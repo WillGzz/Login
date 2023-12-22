@@ -14,10 +14,10 @@ const pool = new Pool({
     const { username, password } = request.body;
   
     pool.query(
-      "INSERT INTO customer (username, password) VALUES ($1, $2) RETURNING *", [username, password],
+      "INSERT INTO CUSTOMER (username, password) VALUES ($1, $2) RETURNING *", [username, password],
       (error, results) => {
         if (error) {
-          throw error;
+          throw error();
         }
         // Send a response with a URL to redirect to
         response.json({ redirect: '/ReactPage' });

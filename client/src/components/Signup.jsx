@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"; //we use this to navigate to new
 
 function Signup() {
 
-    const [name, setName] = useState("");
+    const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [isValid, setIsValid] = useState(false);
@@ -38,13 +38,16 @@ $: This asserts the end of a line.
     };
 
     const navigate = useNavigate();
-    const handleSubmit = async ({ name, password }) => {
+
+
+    
+    const handleSubmit = async () => {
         const response = await fetch('/Signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ name, password }),
+          body: JSON.stringify({ username, password }),
         });
       
         if (!response.ok) {
@@ -63,11 +66,11 @@ $: This asserts the end of a line.
 
 
     const submitForm = async (event) => {
-    //    event.preventDefault(); //prevents the form from being submitted when the “Submit” button is clicked. This allows the form submission to be handled by the JavaScript code instead
-        if (isMatch && isValid && name !== "")  {
+      event.preventDefault(); //prevents the form from being submitted when the “Submit” button is clicked. This allows the form submission to be handled by the JavaScript code instead
+        if (isMatch && isValid && username !== "")  {
             try {
-               await handleSubmit(name, password);
-                setName("");
+               await handleSubmit(username, password);
+                setUserName("");
                 setPassword("");
                 setNewPassword("");
     
@@ -88,7 +91,7 @@ $: This asserts the end of a line.
                 setPassword("");
                 setNewPassword("");
         
-                // Show an alert instead of navigating
+               
                 navigate('/ReactPage');
               } 
     
@@ -108,7 +111,7 @@ JohnDoe123@
                 <form className="signup-form"  onSubmit={submitForm}>
                     
                     <label htmlFor="Name">UserName:</label>
-                    <input type="text" id="Name" name="linkName" required value={name} onChange={(event) => setName(event.target.value)}  />
+                    <input type="text" id="Name" name="linkName" required value={username} onChange={(event) => setUserName(event.target.value)}  />
                     <br />
                     <label id="ps" htmlFor="Password">Password:</label>
                     <input type="password" id="password" required name="Password" value={password} onChange={handlePasswordChange} title="Must be at least 8 characters and contain a capital letter, number, and symbol."/>
@@ -119,7 +122,7 @@ JohnDoe123@
                     {isMatch && <span>✔</span>}
                     <br />
                     <br />
-                   <input id="submit-button" type="submit" value="Confirm"  onClick={submitForm}/>
+                   <input id="submit-button" type="submit" value="Confirm"  />
                    </form>
             </div>
         </div>
