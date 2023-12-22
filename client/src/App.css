@@ -85,6 +85,14 @@ label {
 }
 
 
+#error-message{
+  position: relative;
+  top: 5px;
+  display: inline-block;
+  color: rgb(251, 65, 65);
+  left: 5px;
+}
+
 input[type="text"], input[type="password"]  {
   width: 170px;
   padding: 2px;

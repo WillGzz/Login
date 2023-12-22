@@ -69,7 +69,7 @@ $: This asserts the end of a line.
       event.preventDefault(); //prevents the form from being submitted when the “Submit” button is clicked. This allows the form submission to be handled by the JavaScript code instead
         if (isMatch && isValid && username !== "")  {
             try {
-               await handleSubmit(username, password);
+               await handleSubmit(username, password); //Makes sure the promise is delivered
                 setUserName("");
                 setPassword("");
                 setNewPassword("");
@@ -122,7 +122,7 @@ JohnDoe123@
                     {isMatch && <span>✔</span>}
                     <br />
                     <br />
-                   <input id="submit-button" type="submit" value="Confirm"  />
+                   <input id="submit-button" type="submit" value="Confirm"/>
                    </form>
             </div>
         </div>

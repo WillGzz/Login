@@ -24,10 +24,30 @@ const pool = new Pool({
       }
     );
   };
-  
+ // Login function
+const login = (request, response) => {
+  const { username, password } = request.body;
 
-// Export the signup function
+  pool.query(
+      "SELECT * FROM CUSTOMER WHERE username = $1 AND password = $2", [username, password],
+      (error, results) => {
+          if (error) {
+              throw error;
+          }
+
+          if (results.rows.length > 0) {
+              // User found, send a response with a URL to redirect to
+              response.json({ success: true, redirect: '/ReactPage' });
+          } else {
+              // User not found, send an error message
+              response.json({ success: false, message: 'Please enter the correct username and password.' });
+          }
+      }
+  );
+};
+
+// Export the signup and login functions
 module.exports = {
-  signup
-
+  signup,
+  login
 };

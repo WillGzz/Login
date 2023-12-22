@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
         
 //CRUD APPLICATION
 app.post('/signup', db.signup);
-
+app.post('/login', db.login);
 
      
         
