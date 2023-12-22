@@ -30,11 +30,7 @@ app.get('/', (req, res) => {
         })
         
 //CRUD APPLICATION
-/*
-app.get('/api/links', db.getLinks);
-app.post('/api/links', db.createLinks);
-app.put('/api/links/:id', db.updateLinks); 
-app.delete('/api/links/:id', db.deleteLinks); 
-*/
+app.post('/signup', db.signup);
+
      
         
