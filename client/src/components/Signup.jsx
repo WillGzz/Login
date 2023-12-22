@@ -58,14 +58,14 @@ JohnDoe123@
         <div className="signup-container">
            
             <div>
-                <form onSubmit={submitForm}>
+                <form className="signup-form"  onSubmit={submitForm}>
                     
                     <label htmlFor="Name">UserName:</label>
                     <input type="text" id="Name" name="linkName" required value={name} onChange={(event) => setName(event.target.value)}  />
                     <br />
                     <label id="ps" htmlFor="Password">Password:</label>
                     <input type="password" id="password" required name="Password" value={password} onChange={handlePasswordChange} title="Must be at least 8 characters and contain a capital letter, number, and symbol."/>
-                    {isValid && <span id="password-checkmark">✔</span>}
+                    {isValid && <span id="password-check">✔</span>}
                     <br />
                     <label id="retype" htmlFor="retype">Retype Password:</label>
                     <input type="password" id="Password" required name="Password" value={newPassword} onChange={handleNewPasswordChange} title="Passwords must match" />
