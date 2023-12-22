@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Information from "../assets/Information.png";
+import { useNavigate } from "react-router-dom"; //we use this to navigate to new page after the form is submitted
+
 
 function Signup() {
 
@@ -35,18 +36,43 @@ $: This asserts the end of a line.
         //if the value of the new password match the password variable and the input box for the new password is not empty we have a match 
     };
 
-    const submitForm = (event) => {
-        event.preventDefault();
+    const handleSubmit = async ({ name, password }) => {
+        const response = await fetch('/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, password }),
+        });
+    
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    }
+    
+
+    const navigate = useNavigate();
+
+
+    const submitForm = async (event) => {
+        event.preventDefault(); //prevents the form from being submitted when the “Submit” button is clicked. This allows the form submission to be handled by the JavaScript code instead
         if (isMatch && isValid) {
-            handleSubmit({ name, password });
-            setName("");
-            setPassword("");
-            setNewPassword("");
-            
+            try {
+                await handleSubmit(name, password);
+                setName("");
+                setPassword("");
+                setNewPassword("");
+    
+                navigate('/ReactPage');
+            } catch (error) {
+                console.error('Error:', error);
+                // Handle any errors from handleSubmit here
+            }
         } else {
             alert("Passwords do not match");
         }
     };
+    
 /*
 Demo Account:
 
@@ -72,8 +98,8 @@ JohnDoe123@
                     {isMatch && <span>✔</span>}
                     <br />
                     <br />
-                    <input id="submit-button" type="submit" value="Confirm" />
-                </form>
+                   <input id="submit-button" type="submit" value="Confirm" />
+                   </form>
             </div>
         </div>
     );
